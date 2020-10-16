@@ -1,0 +1,24 @@
+extends layouts/main
+include mixins/installationListBlock
+block content
+    .search__wrapper
+        .search__backward__button
+            button#backward
+                i.fas.fa-arrow-circle-left
+        .search__header
+            h3 Searching by
+                span #{searchingBy}
+        .search__installations
+            if installations.length === 0
+                h5 No Installations Found
+            each item in installations
+                +installationListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    installDate:item.installDate,
+                    countertop:item.countertop,
+                    doorName:item.doorName,
+                    installationAddress:item.installationAddress
+                })
+        

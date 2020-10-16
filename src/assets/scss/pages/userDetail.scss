@@ -1,0 +1,91 @@
+.user__info {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  div:not(:last-child) {
+    padding-bottom: 50px;
+  }
+  .user__info__icon {
+    h4 {
+      i {
+        font-size: 50px;
+      }
+    }
+  }
+  .user__info__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h4:not(:last-child) {
+      padding-bottom: 10px;
+    }
+  }
+  .user__profile__buttons {
+    display: flex;
+    flex-direction: column;
+    a:not(:last-child) {
+      margin-bottom: 15px;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: $mainBlue;
+      width: 150px;
+      height: 25px;
+      color: #fff;
+      text-align: center;
+      line-height: 25px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      opacity: 0.8;
+      transition: all 0.2s;
+    }
+    button:hover {
+      opacity: 1;
+    }
+  }
+  .created__by__user {
+    display: flex;
+    > div {
+      min-width: 190px;
+      max-height: 300px;
+      text-align: center;
+      border: none;
+      overflow: hidden;
+      h4 {
+        margin-bottom: 20px;
+      }
+      a {
+        overflow: visible;
+        padding: 3px 8px;
+        box-sizing: border-box;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        border-radius: 10px;
+        background-color: $boxColor;
+      }
+    }
+    .user__installations {
+      margin-right: 80px;
+      .installation__list__block {
+        a {
+          span:first-child {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+    .user__mnps {
+      .mnp__list__block {
+        a {
+          span:first-child {
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+}

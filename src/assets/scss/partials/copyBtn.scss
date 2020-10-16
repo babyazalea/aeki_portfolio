@@ -1,0 +1,21 @@
+.copy__btn {
+  cursor: pointer;
+  border: none;
+  grid-area: copy;
+  font-size: 14px;
+  transition: all 0.5s;
+  outline: none;
+  display: inline-block;
+  background-color: $green;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  opacity: 0.8;
+  i {
+    margin-right: 5px;
+  }
+}
+.copy__btn:hover {
+  opacity: 1;
+}

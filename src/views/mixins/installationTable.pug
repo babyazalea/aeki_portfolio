@@ -1,0 +1,157 @@
+mixin installationTable
+    table.installtion__table
+        tbody
+            tr.table__header__row
+                th(colspan="5") 고객정보
+            tr
+                td 고객명
+                td.installation_customer_name=installation.customerName
+                td(colspan="2") 연락처
+                td.installation_customer_phone=installation.customerPhone
+            tr
+                td iSell no.
+                td.isell_number=installation.isellNumber
+                td(colspan="2") IHP
+                td.ihp_number=installation.ihpNumber
+            tr
+                td 주소
+                td(colspan="4").installation_address=installation.installationAddress
+            tr.table__header__row
+                th(colspan="5") 서비스 내용
+            tr
+                td 예약 배송일
+                td(colspan="4").reservation_delivery=dateFormatter("yyyy-MM-dd", installation.reservationDate)
+            tr
+                td 실제 배송일
+                if dateFormatter("yyyy-MM-dd", installation.reservationDate) === dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                    td(colspan="4").delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+                else
+                    td(colspan="4").difference_delivery_date=dateFormatter("yyyy-MM-dd", installation.deliveryDate)
+            tr
+                td METOD 설치일
+                td(colspan="4").installation_date=dateFormatter("yyyy-MM-dd", installation.installaionDate)
+            tr
+                td METOD 설치 비용
+                td(colspan="4").installation_cost #{installation.installationCost}원
+            if installation.cmwCheck === "checked"
+                tr.table__header__row
+                    th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                        input.cmw__check(type="checkbox", value=installation.cmwCheck, name="cmwCheck", checked, disabled)
+                        span  )
+                tr.disabled
+                    td CMW 설치일
+                    td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+                tr.disabled
+                    td CMW 설치 비용
+                    td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
+                    td CMW 재료 비용
+                    td.cmw_cost #{installation.cmwCost}원
+            else
+                tr.table__header__row
+                    th(colspan="5") CMW ( <i class="fas fa-times", style="color:red"></i> : 
+                        input.cmw__check(type="checkbox", value="uncheck", name="cmwCheck", disabled)
+                        span  )
+                tr
+                    td CMW 설치일
+                    td(colspan="4").cmw_installation_date=dateFormatter("yyyy-MM-dd", installation.cmwDate)
+                tr
+                    td CMW 설치 비용
+                    td(colspan="2").cmw_installation_cost #{installation.cmwInstallationCost}원
+                    td CMW 재료 비용
+                    td.cmw_cost #{installation.cmwCost}원
+            tr.table__header__row
+                th(colspan="5") 도어 / 조리대 / 싱크 / 조명
+            tr
+                td 도어
+                if installation.countertop === 'Please Choose an option'
+                    td(colspan="2").error ❓
+                else
+                    td(colspan="2").door_name=installation.doorName
+                td 조리대
+                if installation.countertop === 'Please Choose an option'
+                    td.error ❓
+                else
+                    td.countertop_name=installation.countertop
+            tr   
+                td(rowspan="2") 싱크 & 수전
+                td(colspan="2")
+                    span.sink=installation.sink
+                td 시공 방식
+                if installation.howToSink === 'no_how_to_sink'
+                    td.error ❓
+                else if installation.howToSink === 'adhesive'
+                    td.how_to_sink 접착식
+                else if installation.howToSink === 'insertion'
+                    td.how_to_sink 삽입식
+                else if installation.howToSink === 'third_party'
+                    td.how_to_sink 타사   
+            tr
+                td(colspan="2").tap=installation.tap
+                td 조명
+                if installation.lighting === 'dontLighting'
+                    td.lighting ❌
+                else
+                    td.lighting ⭕
+            tr.table__header__row
+                th(colspan="5") 후드/조명
+            tr
+                td 후드
+                td(colspan="2").hood=installation.hood
+                td 쿡탑
+                td.cooktop=installation.cooktop
+            tr.table__header__row
+                th(colspan="5") 변경 사항
+            tr
+                td(colspan="5")
+                    if installation.changeText === ''
+                        div.no__text ❌
+                    else
+                        section.changes=installation.changeText
+            if installation.notPurchasedCheck === "checked"
+                tr.table__header__row
+                    th(colspan="4") 미구매
+                    td
+                        span.notPurchased 미구매 없음
+                        span.notPurchased_check
+                            input(type="checkbox", value=installation.notPurchasedCheck, checked, disabled)
+                tr.disabled
+                    td article no.
+                    td(colspan="4") 제품명
+                tr.disabled
+                        td
+                            span.not__purchased__article__number
+                        td(colspan="4")
+                            span.not__purchased__article__name
+            else
+                tr.table__header__row
+                    th(colspan="4") 미구매
+                    td
+                        span.notPurchased 미구매 없음
+                        span.notPurchased_check
+                            input(type="checkbox", value=installation.notPurchasedCheck, disabled)
+                tr
+                    td article no.
+                    td(colspan="4") 제품명
+                if installation.articleNumber
+                    each item in installation.articleNumber
+                        tr
+                            td
+                                span.not__purchased__article__number(id=item)=item
+                            td(colspan="4")
+                                span.not__purchased__article__name
+                else
+                    tr
+                        td
+                            span.not__purchased__article__number
+                        td(colspan="4")
+                            span.not__purchased__article__name
+            tr.table__header__row    
+                th(colspan="5") 특이 사항
+            tr
+                td(colspan="5")
+                    if installation.singularityText === ''
+                        section.singularity
+                            div.no__text ❌
+                    else
+                        section.singularity=installation.singularityText
+                

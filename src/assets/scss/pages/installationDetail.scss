@@ -1,0 +1,138 @@
+.installation__container {
+  position: relative;
+  padding-top: 50px;
+  width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .installation__backward__button {
+    position: absolute;
+    left: 170px;
+    top: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 30px;
+      height: 30px;
+      color: rgba(0, 0, 0, 0.3);
+      transition: color 0.2s;
+      i {
+        font-size: 30px;
+      }
+    }
+    button:hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
+    a {
+      width: 30px;
+      height: 30px;
+      color: rgba(0, 0, 0, 0.3);
+      transition: color 0.2s;
+      i {
+        font-size: 30px;
+      }
+    }
+    a:hover {
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  .installation__controller {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-bottom: 20px;
+    width: 670px;
+    .installation_create_date {
+    }
+    .button__container {
+      display: flex;
+      justify-content: center;
+      height: 25px;
+      a {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        background-color: $mainBlue;
+        margin-right: 10px;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        opacity: 0.8;
+        transition: all 0.2s;
+        &:hover {
+          opacity: 1;
+        }
+        &:first-child {
+          margin-right: 25px;
+        }
+        &:nth-child(2) {
+          background-color: $warningRed;
+        }
+        i {
+          margin-right: 5px;
+        }
+      }
+      button {
+        margin-left: 15px;
+      }
+    }
+  }
+  .installation__info {
+    table {
+      min-width: 720px;
+      background-color: #fff;
+    }
+    tr {
+      height: 20px;
+      line-height: 20px;
+    }
+    th {
+      border: 0.5px solid;
+    }
+    td {
+      border: 0.5px solid;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .table__header__row {
+      height: 35px;
+      th {
+        font-style: italic;
+        font-weight: 700;
+        font-size: 15px;
+        vertical-align: middle;
+      }
+    }
+    .no__text {
+      text-align: center;
+      font-size: 50px;
+      margin: 0 auto;
+      padding: 25px 0 35px 0;
+    }
+    .difference_delivery_date {
+      color: red;
+      border-color: #000;
+    }
+    tr.disabled {
+      background-color: rgba(0, 0, 0, 0.3);
+      text-decoration: line-through;
+    }
+  }
+  .installation__creator {
+    width: 670px;
+    text-align: right;
+    margin-top: 20px;
+    a {
+      color: $mainBlue;
+    }
+  }
+  .installation__comments {
+    margin-top: 20px;
+  }
+}

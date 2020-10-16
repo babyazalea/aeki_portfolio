@@ -1,0 +1,17 @@
+extends layouts/main
+include mixins/installationForm
+block content
+    form(action=routes.editInstallation(installation.id), method="post")
+        div.installation__form__container
+            .installation__backward__button
+                a(href=routes.installation) <i class="fas fa-arrow-circle-left"></i>
+            table.installation__form
+                tr
+                    th  Create Date
+                tr.edit__installation__controller
+                    td
+                        label(for="createDate")
+                        input(type="date", value=dateFormatter("yyyy-MM-dd", installation.createDate), name="createDate")
+                    td(colspan="4")
+                        button.save_after_edit(type="submit", required=true) <i class="fas fa-edit"></i> Save after Edit
+                +installationForm

@@ -1,0 +1,14 @@
+extends layouts/main
+
+block content
+    .menu__container
+        .menu__row
+            .menu__box
+                a.installlation__menu(href=routes.installation) 설치 구매
+            .menu__box.mnp__menu__box
+                a.undefined__menu(href=routes.mnp) 실측/플래닝 예약
+                if mnps.length >= 1
+                    span=mnps.length
+        .menu__row
+            .menu__box
+                a.schedule__menu(href="") for schedule

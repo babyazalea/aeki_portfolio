@@ -1,0 +1,16 @@
+extends layouts/main
+include mixins/mnpForm
+block content
+    .mnp__form__wrapper
+        .mnp__backward__button
+            a(href=routes.mnp) <i class="fas fa-arrow-circle-left"></i>
+        form(action=routes.editMnp(mnp.id), method="post")
+            table.mnp__form
+                tbody
+                    tr.mnp__controller
+                        td(colspan=2).create__date
+                            span 생성일:
+                            input(type="date", name="createDate", value=currentDate)
+                        td
+                            button.save__after__edit(href="submit") <i class="fas fa-save"></i>Save after Edit
+                    +mnpForm

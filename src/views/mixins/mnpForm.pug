@@ -1,0 +1,100 @@
+mixin mnpForm
+    tr.mnp__header__row
+        th 고객명
+        th 연락처
+        th(colspan=2) 주소
+        th iSell No.
+    tr.mnp__row
+        td.customer__name
+            input(type="text", value=mnp.customerName, name="customerName")
+        td.customer__phone
+            input(type="tel", value=mnp.customerPhone, name="customerPhone")
+        td.address(colspan=2)
+            textarea(name="address")=mnp.address
+        td.isell__number
+            input(type="number", value=mnp.isellNumber, name="isellNumber")
+    tr.mnp__header__row
+        th 예약일
+        th 현장 상황
+        th 주방 형태
+        th 무료 플래닝
+        th 담당자
+    tr.mnp__row
+        td.reservation__date
+            input(type="date", value=dateFormatter("yyyy-MM-dd", mnp.reservationDate), name="reservationDate")
+        td.site__condition
+            input(type="text", value=mnp.siteCondition, name="siteCondition")
+        td.site__shape
+            input(type="text", value=mnp.siteShape, name="siteShape")
+        td.free__planning
+            select(name="freePlanning")
+                - var selected = mnp.freePlanning
+                if(select === "provided")
+                    option(value="provided" selected) ⭕
+                    option(value="notOfferd") ❌
+                else
+                    option(value="provided" selected) ⭕
+                    option(value="notOfferd") ❌
+        td.manager
+            input(type="text", value=mnp.manager, name="manager")
+    tr.mnp__header__row
+        th(colspan=5) 기타 사항
+    tr.mnp__row
+        td.etc__inner 도어
+        td(colspan=4)
+            select(name="doorName")
+                each item in doors
+                    - var selectedDoorName = mnp.doorName;
+                    if (item.name === selectedDoorName)
+                        option(value=item.name selected)=item.name
+                    else
+                        option(value=item.name)=item.name
+    tr.mnp__row
+        td.etc__inner 조리대
+        td(colspan=4)
+            select(name="countertop")
+                each item in countertops
+                    - var selectedCountertop = mnp.countertop;
+                    if(item.name === selectedCountertop)
+                        option(value=item.name selected)=item.name
+                    else
+                        option(value=item.name)=item.name
+    tr.mnp__row
+        td.etc__inner 싱크
+        td(colspan=4)
+            select(name="sink")
+                each item in sinks
+                    - var selectedSink = mnp.sink;
+                    if(item.name === selectedSink)
+                        option(value=item.name selected)=item.name
+                    else
+                        option(value=item.name)=item.name
+    tr.mnp__row
+        td.etc__inner 수전
+        td(colspan=4)
+            select(name="tap")
+                each item in taps
+                    -var selectedTap = mnp.tap;
+                    if(item.name === selectedTap)
+                        option(value=item.name selected)=item.name
+                    else
+                        option(value=item.name)=item.name
+    tr.mnp__row
+        td.etc__inner 가전제품
+        td(colspan=4)
+            input(type="text", value=mnp.appliance, name="appliance")
+    tr.mnp__row
+        td.etc__inner 후드
+        td(colspan=4)
+            input(type="text", value=mnp.hood, name="hood")
+    tr.mnp__row
+        td.etc__inner etc
+        td(colspan=4)
+            textarea(name="singularityText")=mnp.singularityText
+        
+        
+        
+        
+            
+                    
+    

@@ -1,0 +1,24 @@
+extends layouts/main
+include mixins/installationTable
+include mixins/comment
+block content
+    .installation__container
+        .installation__backward__button
+        .installation__controller
+            .installation_create_date
+                span 생성일: 
+                span=dateFormatter("yyyy-MM-dd", installation.createDate)
+            .button__container
+                if loggedUser
+                    if installation.creator.id === loggedUser.id   
+                        a.edit__installation__btn(href=routes.editInstallation(installation.id)) <i class="fas fa-edit"></i>Edit
+                        a.delete__installation__btn(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i>Delete
+                button.copy__btn(data-clipboard-target=".installtion__table")#copy
+                    i.fas.fa-copy
+                    span Copy
+        .installation__info
+            +installationTable
+        .installation__creator
+            |Created by 
+            a(href=routes.userDetail(installation.creator.id))=installation.creator.name
+        +comment(installation)

@@ -1,0 +1,72 @@
+mixin mnpTable
+    table.mnp__table
+        tbody
+            tr.mnp__header__row.first__header
+                th 고객명
+                th 연락처
+                th(colspan=2) 주소
+                th iSell No.
+            tr.mnp__row
+                td.customer__name
+                    span=mnp.customerName
+                td.customer__phone
+                    span=mnp.customerPhone
+                td.address(colspan=2)
+                    span=mnp.address
+                td.isell__number
+                    span=mnp.isellNumber
+            tr.mnp__header__row.second__header
+                th 예약일
+                th 현장 상황
+                th 주방 형태
+                th 무료플래닝
+                th 담당자
+            tr.mnp__row
+                td.reservation__date
+                    span=dateFormatter("yyyy-MM-dd",mnp.reservationDate)
+                td.site__condition
+                    span=mnp.siteCondition
+                td.site__shape
+                    span=mnp.siteShape
+                td.free__planning
+                    if(mnp.freePlanning === "provided")
+                        span ⭕
+                    else
+                        span ❌
+                td.manager
+                    span=mnp.manager
+            tr.mnp__header__row
+                th(colspan=5) 기타 사항
+            tr.mnp__row
+                td.etc__inner 도어
+                td(colspan=4)
+                    span=mnp.doorName
+            tr.mnp__row
+                td.etc__inner 조리대
+                td(colspan=4)
+                    span=mnp.countertop
+            tr.mnp__row
+                td.etc__inner 싱크
+                td(colspan=4)
+                    span=mnp.sink
+            tr.mnp__row
+                td.etc__inner 수전
+                td(colspan=4)
+                    span=mnp.tap
+            tr.mnp__row
+                td.etc__inner 가전제품
+                td(colspan=4)
+                    span=mnp.appliance
+            tr.mnp__row
+                td.etc__inner 후드
+                td(colspan=4)
+                    span=mnp.hood
+            tr.mnp__row
+                td.etc__inner etc
+                td(colspan=4)
+                    if mnp.singularityText === ''
+                        section.singularity
+                            p.no__text ❌
+                    else
+                        section.singularity
+                            p=mnp.singularityText

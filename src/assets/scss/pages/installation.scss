@@ -1,0 +1,89 @@
+.installation__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: auto;
+  .installation__control {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    padding-bottom: 30px;
+    form {
+      margin-right: 50px;
+      input {
+        width: 250px;
+        height: 25px;
+        border: none;
+        background: #fff;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      }
+    }
+    .create__installation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 25px;
+      background-color: $mainBlue;
+      color: #fff;
+      opacity: 0.8;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.2s;
+      h4 {
+        i {
+          margin-right: 10px;
+        }
+      }
+    }
+    .create__installation:hover {
+      opacity: 1;
+    }
+  }
+  .installations {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 635px;
+    div:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    .installation__list__block {
+      .create_date {
+        font-family: Noto Sans;
+        font-weight: 700;
+        font-size: 18px;
+        font-style: italic;
+      }
+      a {
+        display: grid;
+        width: 100%;
+        height: 55px;
+        padding: 10px 15px;
+        box-sizing: border-box;
+        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
+        border-radius: 10px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        row-gap: 5px;
+        column-gap: 5px;
+        align-content: center;
+        justify-content: center;
+        background-color: $boxColor;
+        .install_date {
+          grid-column: 2;
+        }
+        .customer_address {
+          grid-column: span 2;
+        }
+      }
+      a:hover {
+        box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+}

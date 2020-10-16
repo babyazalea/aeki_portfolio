@@ -1,0 +1,32 @@
+mixin comment(item)
+    .comments__container
+        .comment__number
+            if item.comments.length === 1   
+                span#commentNumber=1
+                span#numberTale comment
+            else
+                span#commentNumber=item.comments.length
+                span#numberTale comments
+        .comment__form
+            form#commentForm
+                input(type="text", placeholder="Add Comment", name="comment")
+        .comment__list
+            ul#commentList
+                each comment in item.comments.reverse()
+                    if loggedUser
+                        if loggedUser.id === comment.creator.id
+                            li(id=comment.id)
+                                span=comment.creator.name
+                                span=comment.text
+                                span #{dateFormatter("yy-MM-dd", comment.createdAt)}
+                                span.delete__comment__button <i class="fas fa-minus-circle"></i>
+                        else
+                            li(id=comment.id)
+                                span=comment.creator.name
+                                span=comment.text
+                                span #{dateFormatter("yy-MM-dd", comment.createdAt)}
+                    else
+                        li(id=comment.id)
+                            span=comment.creator.name
+                            span=comment.text
+                            span #{dateFormatter("yy-MM-dd", comment.createdAt)}

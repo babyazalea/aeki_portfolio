@@ -1,0 +1,20 @@
+extends layouts/main
+include mixins/mnpListBlock
+block content
+    .mnp__wrapper
+        .mnp__control
+            form(action=`/mnp${routes.searchMnp}`, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+            a.create__mnp(href=`/mnp${routes.createMnp}`)
+                h4 <i class="fas fa-plus-circle"></i> Create Measurement & Planning
+        .mnps
+            each item in mnps
+                +mnpListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    customerPhone:item.customerPhone,
+                    isellNumber:item.isellNumber,
+                    address:item.address,
+                    reservationDate:item.reservationDate
+                })

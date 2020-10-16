@@ -1,0 +1,14 @@
+mixin mnpListBlock(mnp= {})
+    .mnp__list__block
+        a(href=routes.mnpDetail(mnp.id))
+            span.create_date=dateFormatter("yyyy-MM-dd", mnp.createDate)
+            span.customer_name=mnp.customerName
+            span.customer_phone=mnp.customerPhone
+            p.isell_number
+                span iSell:
+                span=mnp.isellNumber
+            span.week_number WEEK #{weekNumber(mnp.createDate)}
+            p.reservation_date
+                span 예약일:
+                span #{dateFormatter("yyyy-MM-dd",mnp.reservationDate)}
+            span.customer_address=mnp.address

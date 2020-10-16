@@ -1,0 +1,23 @@
+extends layouts/main
+include mixins/mnpListBlock
+block content
+    .search__wrapper
+        .search__backward__button
+            button#backward
+                i.fas.fa-arrow-circle-left
+        .search__header
+            h3 Searching by
+                span #{searchingBy}
+        .search__mnp
+            if mnp.length === 0
+                h5 No Measurement & Planning Found
+            each item in mnp
+                +mnpListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    customerPhone:item.customerPhone,
+                    isellNumber:item.isellNumber,
+                    address:item.address,
+                    reservationDate:item.reservationDate
+                })

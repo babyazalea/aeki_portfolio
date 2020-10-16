@@ -1,0 +1,21 @@
+extends layouts/main
+include mixins/installationListBlock
+
+block content
+    .installation__wrapper
+        .installation__control
+            form(action=`/installation${routes.searchInstallation}`, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+            a.create__installation(href=`/installation${routes.createInstallation}`)
+                h4.create__installation__text <i class="fas fa-plus-circle"></i> Create Installation
+        .installations
+            each item in installations
+                +installationListBlock({
+                    id:item.id,
+                    createDate:item.createDate,
+                    customerName:item.customerName,
+                    installDate:item.installDate,
+                    countertop:item.countertop,
+                    doorName:item.doorName,
+                    installationAddress:item.installationAddress
+                })

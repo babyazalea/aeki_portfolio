@@ -1,0 +1,23 @@
+extends layouts/main
+include mixins/mnpTable
+include mixins/comment
+block content
+    .mnp__table__wrapper
+        .mnp__backward__button
+        .mnp__controller
+            .create__date
+                span 생성일:
+                span=dateFormatter("yyyy-MM-dd",mnp.createDate)
+            .button__container
+                if loggedUser
+                    if mnp.creator.id === loggedUser.id
+                        a.edit__mnp__btn(href=routes.editMnp(mnp.id)) <i class="fas fa-edit"></i>Edit
+                        a.delete__mnp__btn(href=routes.deleteMnp(mnp.id)) <i class="fas fa-trash-alt"></i>Delete
+                button.copy__btn(data-clipboard-target=".mnp__table")#copy
+                    i.fas.fa-copy
+                    span Copy
+        +mnpTable
+        .mnp__creator
+            |Created by 
+            a(href=routes.userDetail(mnp.creator.id))=mnp.creator.name
+        +comment(mnp)

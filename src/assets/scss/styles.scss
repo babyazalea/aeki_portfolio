@@ -1,0 +1,22 @@
+@import "config/_variables.scss";
+@import "config/reset.scss";
+@import "main.scss";
+
+@import "partials/header.scss";
+@import "partials/footer.scss";
+@import "partials/form.scss";
+@import "partials/installationForm.scss";
+@import "partials/mnpForm.scss";
+@import "partials/comment.scss";
+@import "partials/messages.scss";
+@import "partials/copyBtn.scss";
+@import "partials/search.scss";
+
+@import "pages/home.scss";
+@import "pages/installation.scss";
+@import "pages/installationDetail.scss";
+@import "pages/mnp.scss";
+@import "pages/mnpDetail.scss";
+@import "pages/userDetail.scss";
+@import "pages/searchInstallation.scss";
+@import "pages/searchMnp.scss";

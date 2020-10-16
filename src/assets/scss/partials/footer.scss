@@ -1,0 +1,13 @@
+.footer {
+  width: 100%;
+  flex: none;
+  padding-top: 30px;
+  text-align: center;
+  // align-self: flex-end;
+  .footer__text {
+    color: rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+  }
+}

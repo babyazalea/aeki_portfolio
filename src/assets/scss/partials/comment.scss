@@ -1,0 +1,78 @@
+.comments__container {
+  width: 100%;
+  margin-top: 30px;
+  .comment__number {
+    margin-bottom: 20px;
+    span:first-child {
+      margin-right: 5px;
+    }
+  }
+  .comment__form {
+    text-align: center;
+    input {
+      text-indent: 10px;
+      width: 70%;
+      min-height: 25px;
+      border: none;
+      background-color: $boxColor;
+      padding: 5px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+  }
+  .comment__list {
+    margin-top: 25px;
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      li {
+        display: flex;
+        align-items: center;
+        width: 90%;
+        background-color: rgba($mainBlue, 0.3);
+        padding: 10px;
+        border-radius: 10px;
+        transition: all 0.2s;
+        span {
+          opacity: 0.9;
+        }
+        span:first-child {
+          font-size: 12px;
+          margin-right: 20px;
+        }
+        span:nth-child(2) {
+          max-width: 80%;
+          overflow-wrap: break-word;
+        }
+        span:nth-child(3) {
+          margin-left: auto;
+          font-size: 11px;
+        }
+        span:nth-child(4) {
+          margin-left: 10px;
+          cursor: pointer;
+          i {
+            font-size: 12px;
+            color: $warningRed;
+            opacity: 0.7;
+          }
+        }
+      }
+      li:hover {
+        background-color: rgba($mainBlue, 0.6);
+        span {
+          opacity: 1;
+        }
+      }
+      li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+.installation__container {
+  .comments__container {
+    width: 70%;
+  }
+}
