@@ -34,10 +34,10 @@ export const postJoin = async (req, res, next) => {
 // Login
 
 export const getLogin = (req, res) =>
-  res.render("homeLogin", { pageTitle: "Login" });
+  res.render("login", { pageTitle: "Log in" });
 
 export const postLogin = passport.authenticate("local", {
-  failureRedirect: routes.homeLogin,
+  failureRedirect: routes.login,
   successRedirect: routes.home,
   successFlash: "Welcome",
   failureFlash: "이메일과 비밀번호를 확인하세요",
@@ -46,7 +46,7 @@ export const postLogin = passport.authenticate("local", {
 export const logout = (req, res) => {
   req.flash("info", "Logged Out");
   req.logout();
-  res.redirect(routes.homeLogin);
+  res.redirect(routes.home);
 };
 
 export const getMe = async (req, res) => {

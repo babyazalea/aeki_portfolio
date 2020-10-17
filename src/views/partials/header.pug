@@ -1,18 +1,17 @@
 header.header
     .header__wrapper
         .header__column
-            if !loggedUser
-                a(href=routes.homeLogin)
-                    i.fas.fa-tools
-            else
-                a(href=routes.home)
-                    i.fas.fa-tools
+            a(href=routes.home)
+                i.fas.fa-tools
         .header__column
             ul
                 if !loggedUser
                     li
                         a(href=routes.join)
                             span JOIN
+                    li
+                        a(href=routes.login)
+                            span LOGIN
                 else
                     li
                         a(href=routes.me)
@@ -20,3 +19,4 @@ header.header
                     li
                         a(href=routes.logout)
                             span LOG OUT
+        

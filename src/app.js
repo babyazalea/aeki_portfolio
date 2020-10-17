@@ -46,7 +46,7 @@ app.use(passport.session());
 
 app.use(loacalsMiddleware);
 
-app.use(routes.homeLogin, globalRouter);
+app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.installation, installationRouter);
 app.use(routes.mnp, mnpRouter);
