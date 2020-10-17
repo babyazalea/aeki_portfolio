@@ -14,9 +14,11 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     .header__column {
-      i.fa-tools {
+      .logo {
         color: $mainYellow;
+        font-family: "Fredoka One";
         font-size: 35px;
+        font-weight: 100;
       }
       i.fa-user {
         font-size: 20px;

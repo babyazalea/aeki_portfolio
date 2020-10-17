@@ -26,6 +26,7 @@ export const onlyPrivate = (req, res, next) => {
   if (req.user) {
     next();
   } else {
+    req.flash("error", "로그인 후 이용해주세요")
     res.redirect(routes.home);
   }
 };
