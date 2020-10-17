@@ -3,7 +3,7 @@ import date from "date-format";
 import { weekNumber } from "weeknumber";
 
 export const loacalsMiddleware = (req, res, next) => {
-  res.locals.siteName = "AEKI";
+  res.locals.siteName = "wto";
   res.locals.routes = routes;
 
   res.locals.weekNumber = weekNumber;

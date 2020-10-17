@@ -2,7 +2,7 @@
 
 > 예약 고객 관리 도구
 
-    url
+    https://whattheorder.herokuapp.com/
 
 * 구글과 카카오톡 계정으로 사용자를 생성할 수 있습니다.
 
