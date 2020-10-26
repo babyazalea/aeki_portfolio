@@ -4,7 +4,7 @@
 
     https://whattheorder.herokuapp.com/
 
-* 구글과 카카오톡 계정으로 사용자를 생성할 수 있습니다.
+* 이메일로 계정을 생성하거나 <del>구글 계정</del>으로 사용할 수 있습니다. (google-authentication 업데이트 예정)
 
 * 각각의 예약 주문을 생성, 저장, 열람이 가능합니다.
   
