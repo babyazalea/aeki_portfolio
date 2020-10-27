@@ -4,7 +4,7 @@
 
     https://whattheorder.herokuapp.com/
 
-- 이메일로 계정을 생성하거나 구글 계정으로 사용할 수 있습니다. (google-authentication 업데이트 예정)
+- 이메일로 계정을 생성하거나 구글 계정으로 사용할 수 있습니다.
 
 - 각각의 예약 주문을 생성, 저장, 열람이 가능합니다.
 - 주문의 상세 정보 페이지에 comment를 달 수 있습니다.
