@@ -11,7 +11,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: `http://localhost:1000${routes.googleCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://whattheorder.herokuapp.com${routes.googleCallback}`
+        : `http://localhost:1000${routes.googleCallback}`,
     },
     googleLoginCallback
   )
