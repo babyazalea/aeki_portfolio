@@ -8,10 +8,13 @@ import {
   getLogin,
   postLogin,
   getMe,
+  googleLogin,
+  postGoogleLogin,
 } from "../controllers/userController";
 import { home } from "../controllers/homeController";
 import { mnp } from "../controllers/mnpController";
 import { onlyPublic, onlyPrivate } from "../middlewares";
+import passport from "passport";
 
 const globalRouter = express.Router();
 
@@ -28,5 +31,11 @@ globalRouter.get(routes.me, getMe);
 globalRouter.get(routes.installation, installation);
 globalRouter.get(routes.mnp, mnp);
 
-export default globalRouter;
+globalRouter.get(routes.google, googleLogin);
+globalRouter.get(
+  routes.googleCallback,
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  postGoogleLogin
+);
 
+export default globalRouter;

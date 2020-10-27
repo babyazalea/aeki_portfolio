@@ -1,7 +1,8 @@
 .form-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 1200px;
   height: 500px;
   form {
@@ -20,6 +21,32 @@
       &:last-child {
         cursor: pointer;
         background-color: #ffffe5;
+      }
+    }
+  }
+  .social__login {
+    button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 40px;
+      width: 320px;
+      height: 25px;
+      border: none;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        span {
+          i {
+            margin-right: 5px;
+          }
+        }
       }
     }
   }

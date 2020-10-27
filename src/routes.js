@@ -36,6 +36,11 @@ const API = "/api";
 const ADD__COMMENT = "/:id/comment";
 const DELETE__COMMENT = "/:id/comment/:commentId/delete";
 
+// Google
+
+const GOOGLE = "/auth/google";
+const GOOGLE_CALLBACK = "/auth/google/callback";
+
 // routes
 
 const routes = {
@@ -105,6 +110,8 @@ const routes = {
   api: API,
   addComment: ADD__COMMENT,
   deleteComment: DELETE__COMMENT,
+  google: GOOGLE,
+  googleCallback: GOOGLE_CALLBACK,
 };
 
 export default routes;
