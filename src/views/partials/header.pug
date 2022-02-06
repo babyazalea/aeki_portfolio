@@ -5,7 +5,7 @@ header.header
                 span.logo wto
         .header__column
             ul
-                if !loggedUser
+                if !loggedIn
                     li
                         a(href=routes.join)
                             span JOIN
@@ -13,9 +13,6 @@ header.header
                         a(href=routes.login)
                             span LOGIN
                 else
-                    li
-                        a(href=routes.me)
-                            span#userName=loggedUser.name
                     li
                         a(href=routes.logout)
                             span LOG OUT

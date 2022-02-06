@@ -1,9 +1,13 @@
 extends layouts/main
+include mixins/message
 
 block content
     .form-container
+        if (errorMessage)
+            +message({
+                message: errorMessage
+            })
         form(action=routes.login, method="post")
-            input(type="email", name="email", placeholder="Email", required=true)
+            input(type="text", name="userId", placeholder="User ID", required=true)
             input(type="password", name="password", placeholder="Password", required=true)
             input(type="submit", value="Log In")
-        include ./partials/socialLogin.pug

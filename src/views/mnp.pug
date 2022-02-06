@@ -8,13 +8,14 @@ block content
             a.create__mnp(href=`/mnp${routes.createMnp}`)
                 h4 <i class="fas fa-plus-circle"></i> Create Measurement & Planning
         .mnps
-            each item in mnps
-                +mnpListBlock({
-                    id:item.id,
-                    createDate:item.createDate,
-                    customerName:item.customerName,
-                    customerPhone:item.customerPhone,
-                    isellNumber:item.isellNumber,
-                    address:item.address,
-                    reservationDate:item.reservationDate
-                })
+            if mnps
+                each item in mnps
+                    +mnpListBlock({
+                        id:item.id,
+                        createDate:item.createDate,
+                        customerName:item.customerName,
+                        customerPhone:item.customerPhone,
+                        isellNumber:item.isellNumber,
+                        address:item.address,
+                        reservationDate:item.reservationDate
+                    })

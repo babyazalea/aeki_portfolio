@@ -1,5 +1,5 @@
-import passport from "passport";
 import routes from "../routes";
+import bcrypt from "bcrypt";
 import User from "../models/User";
 
 // Join
@@ -9,7 +9,7 @@ export const getJoin = (req, res) => {
 };
 export const postJoin = async (req, res, next) => {
   const {
-    body: { name, email, password, password2 },
+    body: { userId, password, password2 },
   } = req;
   if (password !== password2) {
     req.flash("error", "패스워드가 일치하지 않습니다");
@@ -17,17 +17,13 @@ export const postJoin = async (req, res, next) => {
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
-      const user = await User({
-        name,
-        email,
-      });
-      await User.register(user, password);
-      next();
+      console.log("pre create user");
+      await User.create({ userId, password });
+      res.redirect(routes.login);
     } catch (error) {
       console.log(error);
       res.redirect(routes.home);
     }
-    // To Do: Log user in
   }
 };
 
@@ -36,52 +32,32 @@ export const postJoin = async (req, res, next) => {
 export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Log in" });
 
-export const postLogin = passport.authenticate("local", {
-  failureRedirect: routes.login,
-  successRedirect: routes.home,
-  successFlash: "Welcome",
-  failureFlash: "이메일과 비밀번호를 확인하세요",
-});
-
-export const googleLogin = passport.authenticate("google", {
-  scope: ["profile", "email"],
-});
-
-export const googleLoginCallback = async (
-  accessToken,
-  refreshToken,
-  profile,
-  cb
-) => {
-  const {
-    _json: { sub, name, email },
-  } = profile;
-  try {
-    const user = await User.findOne({ email });
-    if (user) {
-      user.googleId = sub;
-      user.save();
-      return cb(null, user);
-    }
-    const newUser = await User.create({
-      email,
-      name,
-      googleId: sub,
+export const postLogin = async (req, res) => {
+  const { userId, password } = req.body;
+  const user = await User.findOne({ userId: userId });
+  if (!user) {
+    return res.status(400).render("login", {
+      errorMessage: "유저가 존재하지 않습니다.",
+      pageTitle: "Log in",
     });
-    return cb(null, newUser);
-  } catch (error) {
-    return cb(error);
   }
-};
 
-export const postGoogleLogin = (req, res) => {
-  res.redirect(routes.home);
+  const identified = await bcrypt.compare(password, user.password);
+
+  if (!identified) {
+    return res.status(400).render("login", {
+      errorMessage: "아이디와 비밀번호를 확인해주세요.",
+      pageTitle: "Log in",
+    });
+  }
+  req.session.loggedIn = true;
+  req.session.user = user;
+  return res.redirect("/");
 };
 
 export const logout = (req, res) => {
-  req.flash("info", "Logged Out");
-  req.logout();
-  res.redirect(routes.home);
+  req.session.destroy();
+  return res.redirect("/");
 };
 
 export const getMe = async (req, res) => {
@@ -91,65 +67,6 @@ export const getMe = async (req, res) => {
       .populate("mnps");
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
-    res.redirect(routes.home);
-  }
-};
-
-export const getEditProfile = (req, res) => {
-  res.render("editProfile", { pageTitle: "Edit Profile" });
-};
-export const postEditProfile = async (req, res) => {
-  const {
-    body: { name },
-  } = req;
-  try {
-    await User.findByIdAndUpdate(req.user.id, {
-      name,
-    });
-    req.flash("success", "profile updated");
-    res.redirect(routes.me);
-  } catch (error) {
-    console.log(error);
-    req.flash("error", "can't update profile");
-    res.redirect(routes.editProfile);
-  }
-};
-
-export const getChangePassword = (req, res) =>
-  res.render("changePassword", { pageTitle: "Change Password" });
-
-export const postChangePassword = async (req, res) => {
-  const {
-    body: { oldPassword, newPassword, newPassword1 },
-  } = req;
-  try {
-    if (newPassword !== newPassword1) {
-      req.flash("error", "passwords don't match");
-      res.status(400);
-      res.redirect(`/users/${routes.changePassword}`);
-      return;
-    }
-    await req.user.changePassword(oldPassword, newPassword);
-    req.flash("success", "password updated");
-    res.redirect(routes.me);
-  } catch (error) {
-    req.flash("error", "can't change password");
-    res.status(400);
-    res.redirect(`/users/${routes.changePassword}`);
-  }
-};
-
-export const userDetail = async (req, res) => {
-  const {
-    params: { id },
-  } = req;
-  try {
-    const user = await User.findById(id)
-      .populate("installations")
-      .populate("mnps");
-    res.render("userDetail", { pageTitle: "User Detail", user });
-  } catch (error) {
-    req.flash("error", "User not found");
     res.redirect(routes.home);
   }
 };

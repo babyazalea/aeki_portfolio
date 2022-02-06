@@ -9,19 +9,18 @@ import {
   postEditMnp,
   deleteMnp,
 } from "../controllers/mnpController";
-import { onlyPrivate } from "../middlewares";
 const mnpRouter = express.Router();
 
 mnpRouter.get(routes.searchMnp, searchMnp);
 
-mnpRouter.get(routes.createMnp, onlyPrivate, getCreateMnp);
-mnpRouter.post(routes.createMnp, onlyPrivate, postCreateMnp);
+mnpRouter.get(routes.createMnp, getCreateMnp);
+mnpRouter.post(routes.createMnp, postCreateMnp);
 
 mnpRouter.get(routes.mnpDetail(), mnpDetail);
 
-mnpRouter.get(routes.editMnp(), onlyPrivate, getEditMnp);
-mnpRouter.post(routes.editMnp(), onlyPrivate, postEditMnp);
+mnpRouter.get(routes.editMnp(), getEditMnp);
+mnpRouter.post(routes.editMnp(), postEditMnp);
 
-mnpRouter.get(routes.deleteMnp(), onlyPrivate, deleteMnp);
+mnpRouter.get(routes.deleteMnp(), deleteMnp);
 
 export default mnpRouter;

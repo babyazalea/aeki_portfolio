@@ -9,7 +9,7 @@ block content
                 span 생성일: 
                 span=dateFormatter("yyyy-MM-dd", installation.createDate)
             .button__container
-                if loggedUser
+                if loggedIn
                     if installation.creator.id === loggedUser.id   
                         a.edit__installation__btn(href=routes.editInstallation(installation.id)) <i class="fas fa-edit"></i>Edit
                         a.delete__installation__btn(href=routes.deleteInstallation(installation.id)) <i class="fas fa-trash-alt"></i>Delete

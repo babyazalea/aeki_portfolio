@@ -93,10 +93,8 @@ export const postCreateMnp = async (req, res) => {
     appliance,
     hood,
     singularityText,
-    creator: req.user.id,
+    creator: req.session.user._id,
   });
-  req.user.mnps.push(newMnp.id);
-  req.user.save();
   res.redirect(routes.mnpDetail(newMnp.id));
 };
 

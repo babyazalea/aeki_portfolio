@@ -111,7 +111,7 @@ export const postCreateInstallation = async (req, res) => {
       notPurchasedCheck,
       articleNumber,
       singularityText,
-      creator: req.user.id,
+      creator: req.session.user._id,
     });
     req.user.installations.push(newInstallation.id);
     req.user.save();

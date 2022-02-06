@@ -10,23 +10,16 @@ export const loacalsMiddleware = (req, res, next) => {
   res.locals.dateFormatter = date;
   res.locals.currentDate = date.asString("yyyy-MM-dd", new Date());
 
-  res.locals.loggedUser = req.user || null;
+  res.locals.loggedIn = Boolean(req.session.loggedIn);
+  console.log(req.session);
+  res.locals.loggedUser = req.session.user;
   next();
 };
 
-export const onlyPublic = (req, res, next) => {
-  if (req.user) {
-    res.redirect(routes.home);
-  } else {
-    next();
-  }
-};
-
 export const onlyPrivate = (req, res, next) => {
-  if (req.user) {
+  if (req.locals.loggdIn) {
     next();
   } else {
-    req.flash("error", "로그인 후 이용해주세요")
     res.redirect(routes.home);
   }
 };

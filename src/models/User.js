@@ -1,31 +1,14 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
-import passportLocalMongoose from "passport-local-mongoose";
 
 const UserSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  googleId: Number,
-  comments: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Comment",
-    },
-  ],
-  installations: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Installation",
-    },
-  ],
-  mnps: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Mnp",
-    },
-  ],
+  userId: String,
+  password: String,
 });
 
-UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
+UserSchema.pre("save", async function () {
+  this.password = await bcrypt.hash(this.password, 5);
+});
 
 const model = mongoose.model("User", UserSchema);
 
